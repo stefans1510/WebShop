@@ -7,15 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{4CFF619E-2CF7-4428-8877-4C54C4B97EBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indrastructure", "Infrastructure\Indrastructure.csproj", "{6823BE43-7702-40EF-8369-6C8753D76C4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{6823BE43-7702-40EF-8369-6C8753D76C4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CD2726CD-7494-40B8-BA3D-7BAFE987A8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +27,8 @@ Global
 		{6823BE43-7702-40EF-8369-6C8753D76C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6823BE43-7702-40EF-8369-6C8753D76C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6823BE43-7702-40EF-8369-6C8753D76C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
