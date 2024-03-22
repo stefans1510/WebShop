@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { ContactModule } from './contact/contact.module';
 import { AboutModule } from './about/about.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     AboutModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

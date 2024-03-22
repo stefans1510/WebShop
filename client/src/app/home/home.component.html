@@ -1,1 +1,9 @@
-<p>home works!</p>
+<carousel [interval]="myInterval" [showIndicators]="showIndicator" [isAnimated]="true">
+    <slide *ngFor="let slide of slides;" id="slide">
+        <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
+        <div class="carousel-caption">
+            <h4>Slide</h4>
+            <p>{{slide.text}}</p>
+        </div>
+    </slide>
+</carousel>
