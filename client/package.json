@@ -21,6 +21,7 @@
     "bootstrap": "^5.3.3",
     "bootswatch": "^5.3.3",
     "browserify-zlib": "^0.2.0",
+    "cuid": "^3.0.0",
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-spinner": "^15.0.1",

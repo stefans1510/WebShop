@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from './shared/models/products';
+import { CartService } from './cart/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,12 @@ import { Product } from './shared/models/products';
 })
 export class AppComponent implements OnInit{
   title = 'PC Store';
-  products: Product[] = [];
 
-  constructor() {
+  constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
+    const cartId = localStorage.getItem('cart_id');
+    if (cartId) this.cartService.getCart(cartId);
   }
 }
