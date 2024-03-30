@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from './cart/cart.service';
+import { AccountService } from './account/account.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,20 @@ import { CartService } from './cart/cart.service';
 export class AppComponent implements OnInit{
   title = 'PC Store';
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private accountService: AccountService) {}
+
+  loadCart() {
+    const cartId = localStorage.getItem('cart_id');
+    if (cartId) this.cartService.getCart(cartId);
+  }
+
+  loadCurrentUser() {
+    const token = localStorage.getItem('token');
+    this.accountService.loadCurrentUser(token).subscribe();
   }
 
   ngOnInit(): void {
-    const cartId = localStorage.getItem('cart_id');
-    if (cartId) this.cartService.getCart(cartId);
+    this.loadCart();
+    this.loadCurrentUser();
   }
 }

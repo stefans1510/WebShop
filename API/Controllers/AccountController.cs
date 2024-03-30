@@ -58,8 +58,8 @@ namespace API.Controllers
         {
             if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
             {
-                return new BadRequestObjectResult(new ApiValidationErrorrResponse{
-                    Errors = new [] {"This Email is already in use."}
+                return new BadRequestObjectResult(new ApiValidationErrorrResponse {
+                    Errors = new[] {"This Email is already in use."}
                 });
             }
 
@@ -96,8 +96,8 @@ namespace API.Controllers
             }; 
         }
 
-        [HttpGet("emailexists")]
-        public async Task<ActionResult<Boolean>> CheckEmailExistsAsync([FromQuery] string email)
+        [HttpGet("emailExists")]
+        public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
         {
             return await userManager.FindByEmailAsync(email) != null;
         }
