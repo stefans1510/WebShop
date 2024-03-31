@@ -21,6 +21,7 @@ namespace Infrastructure.Data
         public async Task<CustomerCart> GetCartAsync(string cartId)
         {
             var data = await database.StringGetAsync(cartId);
+            
             return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerCart>(data);
         }
 

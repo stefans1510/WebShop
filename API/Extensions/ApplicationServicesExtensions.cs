@@ -23,6 +23,7 @@ namespace API.Extensions
                 var options = ConfigurationOptions.Parse(configuration.GetConnectionString("Redis"));
                 return ConnectionMultiplexer.Connect(options);
             });
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -53,6 +54,7 @@ namespace API.Extensions
                 });
             });
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IOrderService, OrderService>();
 
             return services;
         }
