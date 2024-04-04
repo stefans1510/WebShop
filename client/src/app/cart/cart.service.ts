@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Cart, CartItem, CartTotals } from '../shared/models/cart';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../shared/models/product';
+import { DeliveryMethod } from '../shared/models/deliveryMethod';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class CartService {
   cartSource$ = this.cartSource.asObservable();
   private cartTotalSource = new BehaviorSubject<CartTotals | null>(null);
   cartTotalSource$ = this.cartTotalSource.asObservable();
+  shipping = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -62,14 +64,24 @@ export class CartService {
       else this.deleteCart(cart);
     }
   }
+
   deleteCart(cart: Cart) {
     return this.http.delete(this.baseUrl + 'cart?id=' + cart.id).subscribe({
       next: () => {
-        this.cartSource.next(null);
-        this.cartTotalSource.next(null);
-        localStorage.removeItem('cart_id');
+        this.deleteLocalCart();
       }
     })
+  }
+
+  deleteLocalCart() {
+    this.cartSource.next(null);
+    this.cartTotalSource.next(null);
+    localStorage.removeItem('cart_id');
+  }
+
+  setShippingPrice(deliveryMethod: DeliveryMethod) {
+    this.shipping = deliveryMethod.price;
+    this.calculateTotals();
   }
 
   private addOrUpdateItem(items: CartItem[], itemToAdd: CartItem, quantity: number): CartItem[] {
@@ -106,10 +118,9 @@ export class CartService {
   private calculateTotals() {
     const cart = this.getCurrentCartValue();
     if (!cart) return;
-    const shipping = 0;
     const subtotal = cart.items.reduce((current, prev) => (prev.price * prev.quantity) + current, 0);
-    const total = subtotal + shipping;
-    this.cartTotalSource.next({shipping, total, subtotal})
+    const total = subtotal + this.shipping;
+    this.cartTotalSource.next({shipping: this.shipping, total, subtotal})
   }
 
   private isProduct(item: Product | CartItem): item is Product {
