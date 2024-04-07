@@ -55,9 +55,6 @@ namespace Indrastructure.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PaymentIntentId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("TEXT");

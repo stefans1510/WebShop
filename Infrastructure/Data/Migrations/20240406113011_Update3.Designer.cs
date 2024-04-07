@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Indrastructure.Data.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20240330103708_OrderEntityAdded")]
-    partial class OrderEntityAdded
+    [Migration("20240406113011_Update3")]
+    partial class Update3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,9 +56,6 @@ namespace Indrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OrderDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PaymentIntentId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Status")
