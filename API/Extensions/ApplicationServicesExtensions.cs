@@ -27,6 +27,9 @@ namespace API.Extensions
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IPaymentService, PaymentService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -53,8 +56,6 @@ namespace API.Extensions
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
                 });
             });
-            services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IOrderService, OrderService>();
 
             return services;
         }

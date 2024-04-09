@@ -34,13 +34,32 @@ namespace Infrastructure.Services
 
             var deliveryMethod = await unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
             var subtotal = items.Sum(item => item.Price * item.Quantity);
-            var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal);
-            unitOfWork.Repository<Order>().Add(order);
+            var specification = new OrderByPaymentIntentIdSpecification(cart.PaymentIntentId);
+            var order = await unitOfWork.Repository<Order>().GetEntityWithSpecification(specification);
+            
+            if (order != null)
+            {
+                order.ShipToAddress = shippingAddress;
+                order.DeliveryMethod = deliveryMethod;
+                order.Subtotal = subtotal;
+                unitOfWork.Repository<Order>().Update(order);
+            }
+            else
+            {
+                order = new Order(
+                    items, 
+                    buyerEmail, 
+                    shippingAddress, 
+                    deliveryMethod,
+                    subtotal, 
+                    cart.PaymentIntentId
+                );
+                unitOfWork.Repository<Order>().Add(order);
+            }
+
             var result = await unitOfWork.Complete();  //save to db
 
             if (result <= 0) return null;
-
-            await cartRepository.DeleteCartAsync(cartId); //delete cart
 
             return order;
         }
