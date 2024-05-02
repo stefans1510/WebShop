@@ -14,6 +14,7 @@ namespace API.Extensions
             this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddSingleton<IResponseCacheService, ResponseCacheService>();
             services.AddDbContext<ShopContext>(opt =>
             {
                 opt.UseSqlite(configuration.GetConnectionString("DefaultConnection"));

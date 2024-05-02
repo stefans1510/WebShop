@@ -20,7 +20,8 @@ namespace API.Controllers
             IGenericRepository<Product> productsRepository,
             IGenericRepository<ProductBrand> productBrandsRepository,
             IGenericRepository<ProductType> productTypesRepository,
-            IMapper mapper)
+            IMapper mapper
+        )
         {
             this.productsRepository = productsRepository;
             this.productBrandsRepository = productBrandsRepository;
@@ -28,6 +29,7 @@ namespace API.Controllers
             this.mapper = mapper;
         }
 
+        [Cached(600)]
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(
             [FromQuery]ProductSpecParams productParams)
@@ -47,6 +49,7 @@ namespace API.Controllers
             ));
         }
 
+        [Cached(600)]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -60,12 +63,14 @@ namespace API.Controllers
             return mapper.Map<Product, ProductToReturnDto>(product);
         }
 
+        [Cached(600)]
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
         {
             return Ok(await productBrandsRepository.ListAllAsync());
         }
 
+        [Cached(600)]
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
         {
