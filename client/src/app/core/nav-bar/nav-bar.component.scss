@@ -1,23 +1,46 @@
+
+.cart-link {
+    margin-left: 30px;
+}
+
 .cart-number {
     position: absolute;
     min-height: 24px;
     min-width: 24px;
     border-radius: 50%;
-    background: red;
+    background: #E94560;
     color: white;
     text-align: center;
     top: -12px;
     right: 32px;
 }
 
-a {
+.nav-link {
+    font-size: large;
     text-decoration: none;
     color: black;
     &.active {
-        color: blue;
+        color: #E94560;
     }
 }
 
 .logo {
     cursor: pointer;
+    margin-right: 50px;
+
+}
+
+.login-btn,
+.signup-btn {
+    font-size: large;
+    text-decoration: none;
+    color: rgb(133, 130, 130);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-btn:hover,
+.signup-btn:hover {
+    color: black;
+    text-decoration: underline; 
 }

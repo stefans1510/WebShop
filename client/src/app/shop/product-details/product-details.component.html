@@ -1,34 +1,27 @@
 <div class="container">
     <div class="row" *ngIf="product">
-        <div class="col-6">
-            <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="w-100">
+        <div class="col-md-6">
+            <img [src]="product.pictureUrl" alt="{{product.name}}" class="product-image">
         </div>
-        <div class="col-6 mt-5">
-            <h2> {{product.name}} </h2>
-            <p style="font-size: 2em;"> {{product.price | currency}} </p>
-            <h5 class="text-primary mb-3" *ngIf="quantityInCart > 0">
+        <div class="col-md-6 product-info">
+            <h3 class="product-name">{{product.name}}</h3>
+            <p class="product-price">{{product.price | currency}}</p>
+            <h5 class="mb-3" *ngIf="quantityInCart > 0">
                 You have {{quantityInCart}} of this item in your cart.
             </h5>
-            <div class="d-flex justify-content-start align-items-center">
-                <i (click)="decrementQuantity()"
-                    class="fa fa-minus-circle text-warning me-2"
-                    style="cursor: pointer; font-size: 2em;"></i>
-                <span class="font-weight-bold" style="font-size: 1.5em">
-                    {{quantity}}
-                </span>
-                <i (click)="incrementQuantity()"
-                    class="fa fa-plus-circle text-warning ms-2"
-                    style="cursor: pointer; font-size: 2em;"></i>
-                <button
-                    (click)="updateCart()"
-                    [disabled]="quantity === quantityInCart"
-                    class="btn btn-outline-primary ms-4">
+            <div class="quantity-container">
+                <div class="quantity-controls">
+                    <i (click)="decrementQuantity()" class="fa fa-minus-circle"></i>
+                    <span class="quantity-display">{{quantity}}</span>
+                    <i (click)="incrementQuantity()" class="fa fa-plus-circle"></i>
+                </div>
+                <button (click)="updateCart()" [disabled]="quantity === quantityInCart" class="btn btn-outline-primary ms-4 button">
                     {{buttonText}} 
                 </button>
             </div>
-            <div class="row mt-4">
+            <div class="description">
                 <h4>Description</h4>
-                <p> {{product.description}} </p>
+                <p>{{product.description}}</p>
             </div>
         </div>
     </div>

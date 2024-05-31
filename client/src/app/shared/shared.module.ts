@@ -12,6 +12,8 @@ import { StepperComponent } from './components/stepper/stepper.component';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { RouterModule } from '@angular/router';
+import { AboutComponent } from '../about/about.component';
+import { ContactComponent } from '../contact/contact.component';
 
 @NgModule({
   declarations: [

@@ -1,9 +1,21 @@
+<div class="carousel-container"></div>
 <carousel [interval]="myInterval" [showIndicators]="showIndicator" [isAnimated]="true">
     <slide *ngFor="let slide of slides;" id="slide">
-        <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
-        <div class="carousel-caption">
-            <h4>Slide</h4>
-            <p>{{slide.text}}</p>
+        <div class="image-container">
+            <img [src]="slide.image" alt="image slide" class="carousel-image">
+            <div class="shadow-overlay"></div>
+            <div class="carousel-caption">
+                <h4>{{slide.title}}</h4>
+                <a href="/shop">{{slide.text}}</a>
+            </div>
         </div>
     </slide>
 </carousel>
+
+<div id="about">
+    <app-about></app-about>
+</div>
+
+<div id="contact">
+    <app-contact></app-contact>
+</div>

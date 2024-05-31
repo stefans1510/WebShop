@@ -1,0 +1,27 @@
+::ng-deep {
+        .pagination .page-link {
+            color: #0077C0;
+            background-color: #fff;
+            border-color: #dee2e6;
+        }
+
+        .pagination li.active a,
+        .pagination li.active button {
+            color: #fff;
+            background-color: #0077C0;
+            border-color: #0077C0;
+        }
+
+        .pagination .page-link:hover {
+            color: #fff;
+            background-color: #0077C0;
+            border-color: #0077C0;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            pointer-events: none;
+            color: #5b5e5e;
+            background-color: #f8f9fa;
+            border-color: #dee2e6;
+        }
+}

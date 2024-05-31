@@ -2,10 +2,10 @@
     <app-cart-summary [isCart]="false"></app-cart-summary>
 </div>
 <div class="d-flex justify-content-between flex-row mb-5">
-    <button class="btn btn-outline-primary" cdkStepperPrevious>
+    <button class="btn btn-outline-primary back" cdkStepperPrevious>
         <i class="fa fa-angle-left"></i> Back to Delivery
     </button>
-    <button class="btn btn-primary" (click)="createPaymentIntent()">
+    <button class="btn btn-primary next" (click)="createPaymentIntent()">
         Go to Payment <i class="fa fa-angle-right"></i> 
     </button>
 </div>

@@ -1,5 +1,70 @@
-img {
-    object-fit: cover;
-    height: 600px;
+.carousel-container {
+    margin-top: 70px;
+}
+
+.image-container {
+    position: relative;
     width: 100%;
+    display: block;
+    height: 600px;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.shadow-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    pointer-events: none;
+}
+
+.carousel-caption {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+a {
+    color: #C7EEFF;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+::ng-deep {
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #0077C0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .image-container {
+        height: 550px;
+    }
+}
+
+@media (max-width: 992px) {
+    .image-container {
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        height: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .image-container {
+        height: 250px;
+    }
 }

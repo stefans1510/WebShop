@@ -2,16 +2,16 @@
     <table class="table">
         <thead class="text-uppercase" [class.bg-light]="isCart">
             <tr>
-                <th><div class="py-2">Product</div></th>
-                <th><div class="py-2">Price</div></th>
-                <th><div class="py-2">Quantity</div></th>
-                <th><div class="py-2">Total</div></th>
-                <th *ngIf="isCart"><div class="py-2">Remove</div></th>
+                <th class="align-middle"><div class="py-2">Product</div></th>
+                <th class="align-middle text-center"><div class="py-2">Price</div></th>
+                <th class="align-middle text-center"><div class="py-2">Quantity</div></th>
+                <th class="align-middle text-center"><div class="py-2">Total</div></th>
+                <th *ngIf="isCart" class="align-middle"><div class="py-2">Remove</div></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of cart.items">
-                <th>
+                <td class="align-middle">
                     <div class="p-2 d-inline-block">
                         <img src="{{item.pictureUrl}}" 
                             alt="{{item.productName}}" 
@@ -25,14 +25,14 @@
                                 </a>
                             </h5>
                             <span class="text-muted fst-italic">
-                                Type: {{item.type}}
+                                Category: {{item.type}}
                             </span>
                         </div>
                     </div>
-                </th>
-                <td class="align-middle"><strong>{{item.price | currency}}</strong></td>
-                <td class="align-middle">
-                    <div class="d-flex align-items-center justify-content-center">
+                </td>
+                <td class="align-middle text-center"><strong>{{item.price | currency}}</strong></td>
+                <td class="align-middle text-center">
+                    <div class="d-flex align-items-center justify-content-center quantity-controls">
                         <i *ngIf="isCart" class="fa fa-minus-circle text-warning me-2" 
                             style="cursor: pointer; font-size: 2em;"
                             (click)="removeCartItem(item.id, 1)"></i>
@@ -42,8 +42,8 @@
                             (click)="addCartItem(item)"></i>
                     </div>
                 </td>
-                <td class="align-middle"><strong>{{item.price * item.quantity | currency}}</strong></td>
-                <td *ngIf="isCart" class="align-middle">
+                <td class="align-middle text-center"><strong>{{item.price * item.quantity | currency}}</strong></td>
+                <td *ngIf="isCart" class="align-middle text-center">
                     <a class="text-danger">
                         <i (click)="removeCartItem(item.id, item.quantity)"
                             class="fa fa-trash" 

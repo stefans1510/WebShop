@@ -13,6 +13,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { OrderDetailedComponent } from './order-detailed/order-detailed.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { OrderDetailedComponent } from './order-detailed/order-detailed.componen
     CoreModule,
     HomeModule,
     ContactModule,
-    AboutModule
+    AboutModule,
+    CarouselModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

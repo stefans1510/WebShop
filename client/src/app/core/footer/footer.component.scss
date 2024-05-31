@@ -1,0 +1,51 @@
+h5 {
+    color: #C7EEFF;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+p,
+a {
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #d1d1d1;
+}
+
+.fa {
+    transition: color 0.3s;
+}
+
+.fa:hover {
+    color: #d1d1d1;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.social-icons a {
+    margin-right: 1rem;
+}
+
+.social-icons a:last-child {
+    margin-right: 0;
+}
+
+@media (max-width: 576px) {
+    .footer {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}

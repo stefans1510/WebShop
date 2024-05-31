@@ -1,0 +1,9 @@
+h1 {
+    color: #1A1A2E;
+}
+
+::ng-deep {
+    .xng-breadcrumb-trail{
+        color: #0077C0 !important; /* Change color to the desired color for the current breadcrumb */
+    }
+}

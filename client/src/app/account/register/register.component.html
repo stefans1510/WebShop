@@ -1,8 +1,9 @@
-<div class="d-flex justify-content-center mt-5">'
-    <div class="col-3">
-      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-        <div class="text-cetnter mb-4">
-          <h1 class="mb-3">Register</h1>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
+        <div class="text-center mb-4">
+          <p class="mb-3 title">Create Account</p>
         </div>
         <app-text-input [formControl]="registrationForm.controls['displayName']" [label]="'Name'"></app-text-input>
         <app-text-input [formControl]="registrationForm.controls['email']" [label]="'Email Address'"></app-text-input>
@@ -13,8 +14,12 @@
             </li>
         </ul>
         <div class="d-grid">
-          <button [disabled]="registrationForm.invalid" class="btn btn-lg btn-primary mt-3" type="submit">Register</button>
+          <button [disabled]="registrationForm.invalid" class="btn btn-lg btn-primary mt-3" type="submit">Sign Up</button>
         </div>
       </form>
+      <div class="text-center mt-3">
+        <p class="mb-0">Already have an account? <a routerLink="/account/login" class="link">Sign in</a></p>
+      </div>
     </div>
   </div>
+</div>
